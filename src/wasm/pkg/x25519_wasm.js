@@ -80,7 +80,7 @@ function passArray8ToWasm0(arg, malloc) {
     return ptr;
 }
 
-const MemoryFinalization = (typeof FinalizationRegistry === 'undefined')
+const MemoryFinalization = true
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_memory_free(ptr >>> 0, 1));
 /**
@@ -139,7 +139,7 @@ export class Memory {
     }
 }
 
-const X25519PublicKeyFinalization = (typeof FinalizationRegistry === 'undefined')
+const X25519PublicKeyFinalization = true
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_x25519publickey_free(ptr >>> 0, 1));
 /**
@@ -215,7 +215,7 @@ export class X25519PublicKey {
     }
 }
 
-const X25519SharedSecretFinalization = (typeof FinalizationRegistry === 'undefined')
+const X25519SharedSecretFinalization = true
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_x25519sharedsecret_free(ptr >>> 0, 1));
 /**
@@ -257,7 +257,7 @@ export class X25519SharedSecret {
     }
 }
 
-const X25519StaticSecretFinalization = (typeof FinalizationRegistry === 'undefined')
+const X25519StaticSecretFinalization = true
     ? { register: () => {}, unregister: () => {} }
     : new FinalizationRegistry(ptr => wasm.__wbg_x25519staticsecret_free(ptr >>> 0, 1));
 /**

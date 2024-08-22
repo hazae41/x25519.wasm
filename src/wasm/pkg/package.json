@@ -1,0 +1,24 @@
+{
+  "name": "x25519_wasm",
+  "type": "module",
+  "collaborators": [
+    "hazae41 <4405263+hazae41@users.noreply.github.com>"
+  ],
+  "description": "WebAssembly port of X25519",
+  "version": "1.0.0",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hazae41/x25519.wasm"
+  },
+  "files": [
+    "x25519_wasm_bg.wasm",
+    "x25519_wasm.js",
+    "x25519_wasm.d.ts"
+  ],
+  "main": "x25519_wasm.js",
+  "types": "x25519_wasm.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

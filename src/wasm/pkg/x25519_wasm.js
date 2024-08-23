@@ -91,14 +91,16 @@ export class Memory {
         ptr = ptr >>> 0;
         const obj = Object.create(Memory.prototype);
         obj.__wbg_ptr = ptr;
-        MemoryFinalization.register(obj, obj.__wbg_ptr, obj);
+        MemoryFinalization;
         return obj;
     }
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
         this.__wbg_ptr = 0;
-        MemoryFinalization.unregister(this);
+        this.__wbg_ptr0 = 0;
+        this.__wbg_len0 = 0;
+        MemoryFinalization;
         return ptr;
     }
 
@@ -114,7 +116,9 @@ export class Memory {
         const len0 = WASM_VECTOR_LEN;
         const ret = wasm.memory_new(ptr0, len0);
         this.__wbg_ptr = ret >>> 0;
-        MemoryFinalization.register(this, this.__wbg_ptr, this);
+        this.__wbg_ptr0 = ptr0 >>> 0;
+        this.__wbg_len0 = len0 >>> 0;
+        MemoryFinalization;
         return this;
     }
     /**
@@ -132,10 +136,22 @@ export class Memory {
         return ret >>> 0;
     }
     /**
+    * @returns {number}
+    */
+    get ptr0() {
+        return this.__wbg_ptr0 ??= this.ptr();
+    }
+    /**
+    * @returns {number}
+    */
+    get len0() {
+        return this.__wbg_len0 ??= this.len();
+    }
+    /**
     * @returns {Uint8Array}
     */
     get bytes() {
-        return getUint8ArrayMemory0().subarray(this.ptr(), this.ptr() + this.len());
+        return getUint8ArrayMemory0().subarray(this.ptr0, this.ptr0 + this.len0);
     }
 }
 
@@ -150,14 +166,14 @@ export class X25519PublicKey {
         ptr = ptr >>> 0;
         const obj = Object.create(X25519PublicKey.prototype);
         obj.__wbg_ptr = ptr;
-        X25519PublicKeyFinalization.register(obj, obj.__wbg_ptr, obj);
+        X25519PublicKeyFinalization;
         return obj;
     }
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
         this.__wbg_ptr = 0;
-        X25519PublicKeyFinalization.unregister(this);
+        X25519PublicKeyFinalization;
         return ptr;
     }
 
@@ -180,7 +196,7 @@ export class X25519PublicKey {
                 throw takeObject(r1);
             }
             this.__wbg_ptr = r0 >>> 0;
-            X25519PublicKeyFinalization.register(this, this.__wbg_ptr, this);
+            X25519PublicKeyFinalization;
             return this;
         } finally {
             wasm.__wbindgen_add_to_stack_pointer(16);
@@ -226,14 +242,14 @@ export class X25519SharedSecret {
         ptr = ptr >>> 0;
         const obj = Object.create(X25519SharedSecret.prototype);
         obj.__wbg_ptr = ptr;
-        X25519SharedSecretFinalization.register(obj, obj.__wbg_ptr, obj);
+        X25519SharedSecretFinalization;
         return obj;
     }
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
         this.__wbg_ptr = 0;
-        X25519SharedSecretFinalization.unregister(this);
+        X25519SharedSecretFinalization;
         return ptr;
     }
 
@@ -268,14 +284,14 @@ export class X25519StaticSecret {
         ptr = ptr >>> 0;
         const obj = Object.create(X25519StaticSecret.prototype);
         obj.__wbg_ptr = ptr;
-        X25519StaticSecretFinalization.register(obj, obj.__wbg_ptr, obj);
+        X25519StaticSecretFinalization;
         return obj;
     }
 
     __destroy_into_raw() {
         const ptr = this.__wbg_ptr;
         this.__wbg_ptr = 0;
-        X25519StaticSecretFinalization.unregister(this);
+        X25519StaticSecretFinalization;
         return ptr;
     }
 
@@ -288,7 +304,7 @@ export class X25519StaticSecret {
     constructor() {
         const ret = wasm.x25519staticsecret_random();
         this.__wbg_ptr = ret >>> 0;
-        X25519StaticSecretFinalization.register(this, this.__wbg_ptr, this);
+        X25519StaticSecretFinalization;
         return this;
     }
     /**

@@ -16,6 +16,9 @@ npm i @hazae41/x25519.wasm
 ## Modules
 - x25519-dalek
 
+## Algorithms
+- X25519
+
 ## Usage
 
 ```typescript

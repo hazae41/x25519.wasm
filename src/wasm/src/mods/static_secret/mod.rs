@@ -2,7 +2,8 @@ use wasm_bindgen::prelude::*;
 
 use crate::mods::public_key::X25519PublicKey;
 use crate::mods::shared_secret::X25519SharedSecret;
-use crate::rjse;
+
+use crate::libs::jse::rjse;
 
 use memory_wasm::Memory;
 

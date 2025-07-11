@@ -1,7 +1,5 @@
 /* tslint:disable */
 /* eslint-disable */
-/**
-*/
 export class Memory {
   [Symbol.dispose](): void;
 /**
@@ -21,61 +19,24 @@ export class Memory {
 */
   get bytes(): Uint8Array;
 }
-/**
-*/
 export class X25519PublicKey {
   [Symbol.dispose](): void;
-/**
-* @param {Memory} bytes
-*/
   constructor(bytes: Memory);
-/**
-* @param {Memory} bytes
-* @returns {X25519PublicKey}
-*/
   static from_bytes(bytes: Memory): X25519PublicKey;
-/**
-* @returns {Memory}
-*/
   to_bytes(): Memory;
 }
-/**
-*/
 export class X25519SharedSecret {
+  private constructor();
   [Symbol.dispose](): void;
-/**
-* @returns {Memory}
-*/
   to_bytes(): Memory;
-/**
-* @returns {boolean}
-*/
   was_contributory(): boolean;
 }
-/**
-*/
 export class X25519StaticSecret {
   [Symbol.dispose](): void;
-/**
-*/
   constructor();
-/**
-* @param {Memory} bytes
-* @returns {X25519StaticSecret}
-*/
   static from_bytes(bytes: Memory): X25519StaticSecret;
-/**
-* @returns {Memory}
-*/
   to_bytes(): Memory;
-/**
-* @param {X25519PublicKey} other
-* @returns {X25519SharedSecret}
-*/
   diffie_hellman(other: X25519PublicKey): X25519SharedSecret;
-/**
-* @returns {X25519PublicKey}
-*/
   to_public(): X25519PublicKey;
 }
 
@@ -83,26 +44,29 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly __wbg_x25519publickey_free: (a: number, b: number) => void;
-  readonly x25519publickey_new: (a: number, b: number) => void;
-  readonly x25519publickey_from_bytes: (a: number, b: number) => void;
-  readonly x25519publickey_to_bytes: (a: number) => number;
-  readonly x25519staticsecret_random: () => number;
-  readonly x25519staticsecret_diffie_hellman: (a: number, b: number) => number;
-  readonly x25519staticsecret_to_public: (a: number) => number;
-  readonly x25519staticsecret_from_bytes: (a: number, b: number) => void;
-  readonly x25519staticsecret_to_bytes: (a: number) => number;
-  readonly __wbg_x25519staticsecret_free: (a: number, b: number) => void;
   readonly __wbg_x25519sharedsecret_free: (a: number, b: number) => void;
   readonly x25519sharedsecret_to_bytes: (a: number) => number;
   readonly x25519sharedsecret_was_contributory: (a: number) => number;
+  readonly __wbg_x25519staticsecret_free: (a: number, b: number) => void;
+  readonly x25519staticsecret_random: () => number;
+  readonly x25519staticsecret_from_bytes: (a: number) => [number, number, number];
+  readonly x25519staticsecret_to_bytes: (a: number) => number;
+  readonly x25519staticsecret_diffie_hellman: (a: number, b: number) => number;
+  readonly x25519staticsecret_to_public: (a: number) => number;
+  readonly __wbg_x25519publickey_free: (a: number, b: number) => void;
+  readonly x25519publickey_new: (a: number) => [number, number, number];
+  readonly x25519publickey_from_bytes: (a: number) => [number, number, number];
+  readonly x25519publickey_to_bytes: (a: number) => number;
   readonly __wbg_memory_free: (a: number, b: number) => void;
   readonly memory_new: (a: number, b: number) => number;
   readonly memory_ptr: (a: number) => number;
   readonly memory_len: (a: number) => number;
-  readonly __wbindgen_add_to_stack_pointer: (a: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
+  readonly __externref_table_alloc: () => number;
+  readonly __wbindgen_export_2: WebAssembly.Table;
+  readonly __externref_table_dealloc: (a: number) => void;
   readonly __wbindgen_malloc: (a: number, b: number) => number;
+  readonly __wbindgen_start: () => void;
 }
 
 export type SyncInitInput = BufferSource | WebAssembly.Module;

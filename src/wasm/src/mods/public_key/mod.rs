@@ -2,6 +2,8 @@ use wasm_bindgen::prelude::*;
 
 use memory_wasm::Memory;
 
+use crate::rjse;
+
 #[wasm_bindgen]
 pub struct X25519PublicKey {
     pub(crate) inner: x25519_dalek::PublicKey,

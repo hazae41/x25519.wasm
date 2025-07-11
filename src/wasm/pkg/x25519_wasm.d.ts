@@ -44,9 +44,6 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
-  readonly __wbg_x25519sharedsecret_free: (a: number, b: number) => void;
-  readonly x25519sharedsecret_to_bytes: (a: number) => number;
-  readonly x25519sharedsecret_was_contributory: (a: number) => number;
   readonly __wbg_x25519staticsecret_free: (a: number, b: number) => void;
   readonly x25519staticsecret_random: () => number;
   readonly x25519staticsecret_from_bytes: (a: number) => [number, number, number];
@@ -54,9 +51,12 @@ export interface InitOutput {
   readonly x25519staticsecret_diffie_hellman: (a: number, b: number) => number;
   readonly x25519staticsecret_to_public: (a: number) => number;
   readonly __wbg_x25519publickey_free: (a: number, b: number) => void;
-  readonly x25519publickey_new: (a: number) => [number, number, number];
   readonly x25519publickey_from_bytes: (a: number) => [number, number, number];
   readonly x25519publickey_to_bytes: (a: number) => number;
+  readonly x25519publickey_new: (a: number) => [number, number, number];
+  readonly __wbg_x25519sharedsecret_free: (a: number, b: number) => void;
+  readonly x25519sharedsecret_to_bytes: (a: number) => number;
+  readonly x25519sharedsecret_was_contributory: (a: number) => number;
   readonly __wbg_memory_free: (a: number, b: number) => void;
   readonly memory_new: (a: number, b: number) => number;
   readonly memory_ptr: (a: number) => number;

@@ -18,7 +18,7 @@ impl X25519PublicKey {
 
     #[wasm_bindgen]
     pub fn from_bytes(bytes: &Memory) -> Result<X25519PublicKey, JsError> {
-        let bytes: [u8; 32] = bytes.inner.as_slice().try_into()?;
+        let bytes: [u8; 32] = rjse!(bytes.inner.as_slice().try_into())?;
         let inner = x25519_dalek::PublicKey::from(bytes);
 
         Ok(Self { inner })

@@ -2,6 +2,7 @@ use wasm_bindgen::prelude::*;
 
 use crate::mods::public_key::X25519PublicKey;
 use crate::mods::shared_secret::X25519SharedSecret;
+use crate::rjse;
 
 use memory_wasm::Memory;
 
@@ -21,7 +22,7 @@ impl X25519StaticSecret {
 
     #[wasm_bindgen]
     pub fn from_bytes(bytes: &Memory) -> Result<X25519StaticSecret, JsError> {
-        let bytes: [u8; 32] = bytes.inner.as_slice().try_into()?;
+        let bytes: [u8; 32] = rjse!(bytes.inner.as_slice().try_into())?;
         let inner = x25519_dalek::StaticSecret::from(bytes);
 
         Ok(Self { inner })

@@ -1,4 +1,4 @@
-# x25519.wasm
+# x25519.wasm (deprecated: use WebCrypto)
 
 WebAssembly port of X25519
 
